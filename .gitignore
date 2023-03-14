@@ -1,6 +1,4 @@
 node_modules
 .env
 snippets.js
-.vscode
-migrate.bat
-seeds.bat
+.vscode 
