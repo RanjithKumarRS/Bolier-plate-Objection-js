@@ -1,0 +1,65 @@
+{
+  "name": "boiler_plate",
+  "version": "1.0.0",
+  "description": "knex express postgres bolierplate",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --reporter spec -r dotenv/config --exit --require @babel/register  test",
+    "start": "node_modules/.bin/babel-node -r dotenv/config server.js",
+    "dev": "nodemon -r dotenv/config --exec node_modules/.bin/babel-node server.js",
+    "debug": "node_modules/.bin/babel-node -r dotenv/config server.js  --inspect",
+    "prepare": "husky install",
+    "migrate": "npx knex migrate:latest  --knexfile ./db/knexfile.js",
+    "rollback": "npx knex migrate:rollback  --knexfile ./db/knexfile.js",
+    "allseeds": "npx knex seed:run --knexfile ./db/knexfile.js",
+    "swagger": "node_modules/.bin/babel-node -r swagger.js",
+    "swagger-windows": "npx babel-node  swagger.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "node pre-push.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/propgoto/public-listing.git"
+  },
+  "keywords": [
+    "expense",
+    "tracker"
+  ],
+  "author": "ray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/propgoto/public-listing.git"
+  },
+  "homepage": "https://github.com/propgoto/public-listing.git#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.18.9",
+    "@babel/core": "^7.18.9",
+    "@babel/node": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "axios": "^1.3.4",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "husky": "^8.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "objection-unique": "^1.2.2",
+    "pretty-quick": "^3.1.3",
+    "swagger-autogen": "^2.23.1",
+    "swagger-ui-express": "^4.6.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^9.0.0",
+    "knex": "^2.2.0",
+    "objection": "^3.0.1",
+    "pg": "^8.7.3"
+  }
+}

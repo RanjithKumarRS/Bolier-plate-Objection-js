@@ -1,0 +1,94 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "App Title",
+      "description": "Description of App",
+      "version": "1.0.11"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:1998/api/v1/"
+      },
+      {
+        "url": "server url"
+      }
+    ],
+    "tags": [
+      {
+        "name": "auth",
+        "description": "User Sync"
+      } 
+    ],
+    "paths": {
+      "/auth/user_sync": {
+        "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+        "post": {
+          "tags": ["auth"],
+          "summary": " User sync",
+          "description": " User sync",
+          "requestBody": {
+            "description": "Logged User Sync",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Success"
+            },
+            "400": {
+              "description": "Schema Validation Error"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Auth": {
+          "required": ["name", "email", "sub_id"],
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "mobile_no": {
+              "type": "string"
+            },
+            "mobile_no_country_code": {
+              "type": "string"
+            },
+            "sub_id": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "in": "headers",
+          "name": "authorization",
+          "description": "Bearer Token"
+        }
+      }
+    }
+  }
+  
